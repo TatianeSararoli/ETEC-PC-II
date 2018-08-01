@@ -15,7 +15,15 @@ public class AlunosJdbcDAO {
 	}
 	
 	public void salvar(Alunos c) throws SQLException {
-		String sql = "insert into alunos (nome, endereço, bairro) values ("+c.getNome()+"','"+c.getEndereco()+"','"+c.getBairro()+"','"+c.getCep()+"')";
+		String sql = "insert into alunos (nome, endereco, bairro, cep) values ('"+c.getNome()+"','"+c.getEndereco()+"','"+c.getBairro()+"','"+c.getCep()+"')";
+		System.out.println(sql);
+		PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
+		prepareStatement.executeUpdate();
+		prepareStatement.close(); 
+	}
+	
+	public void excluir(int id) throws SQLException {
+		String sql = "delete from alunos where id =" +id;
 		System.out.println(sql);
 		PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 		prepareStatement.executeUpdate();

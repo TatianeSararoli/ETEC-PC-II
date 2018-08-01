@@ -15,11 +15,13 @@ public class AlunosExec {
 			alunos.setNome("Tatiane");
 			alunos.setEndereco("Av. Águia de Haia");
 			alunos.setBairro("Jd. cotinha");
+			alunos.setCep(99999999);
 			
 			Connection connection = JdbUtil.getConnection();
 			AlunosJdbcDAO alunosJdbcDao = new AlunosJdbcDAO(connection);
 			
-			alunosJdbcDao.salvar(alunos);
+			//alunosJdbcDao.salvar(alunos);
+			alunosJdbcDao.excluir(2);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
