@@ -18,32 +18,24 @@ public class AlunosJdbcDAO {
 	}
 	
 	public void salvar(Alunos c) throws SQLException {
-		String sql = "insert into alunos (nome, endereco, bairro) values ('"+c.getNome()+"','"+c.getEndereco()+"','"+c.getBairro()+"')";
+		String sql = "insert into alunos (nome, endereco, bairro, cep) values ('"+c.getNome()+"','"+c.getEndereco()+"','"+c.getBairro()+"','"+c.getCep()+"')";
 		System.out.println(sql);
 		PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 		prepareStatement.executeUpdate();
 		prepareStatement.close(); 
 	}
 	
-	public void excluir(int id) throws SQLException {
-		String sql = "delete from alunos where id =" +id;
-		System.out.println(sql);
-		PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
-		prepareStatement.executeUpdate();
-		prepareStatement.close();
-	}
-	
 	public void alterar(Alunos c) {
-		String sql = "update alunos set nome = '"+c.getNome()+"', endereco = '"+c.getEndereco()+"', bairro = '"+c.getBairro()+"';";
+		String sql = "update alunos set nome='"+c.getNome()+"',endereco='"+c.getEndereco()+"',bairro='"+c.getBairro()+"';";
 		System.out.println(sql);
 		PreparedStatement prepareStatement;
 		try {
 			prepareStatement = this.conn.prepareStatement(sql);
 			prepareStatement.executeUpdate();
-			prepareStatement.close();
+            prepareStatement.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
+		}		
 	}
 	
 	public List<Alunos> listar() {
@@ -54,21 +46,29 @@ public class AlunosJdbcDAO {
 			PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 			ResultSet rs = prepareStatement.executeQuery();
 			while (rs.next()) {
-				int id = rs.getInt("id");
 				String nome = rs.getString("nome");
 				String endereco = rs.getString("endereco");
 				String bairro = rs.getString("bairro");
+				int cep = rs.getInt("cep"); 
 				Alunos aluno = new Alunos();
-				aluno.setId(id);
 				aluno.setNome(nome);
 				aluno.setEndereco(endereco);
 				aluno.setBairro(bairro);
+				aluno.setCep(cep);
 			}
 			prepareStatement.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return alunos;
+	}
+	
+	public void excluir(int id) throws SQLException {
+		String sql = "delete from alunos where id =" +id;
+		System.out.println(sql);
+		PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
+		prepareStatement.executeUpdate();
+		prepareStatement.close(); 
 	}
 
 }
