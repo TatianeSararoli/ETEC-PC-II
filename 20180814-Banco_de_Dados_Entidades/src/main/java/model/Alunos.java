@@ -5,6 +5,7 @@ public class Alunos {
 	private String endereco;
 	private String bairro;
 	private int cep;
+	private int nr_curso;
 	public String getNome() {
 		return nome;
 	}
@@ -28,6 +29,12 @@ public class Alunos {
 	}
 	public void setCep(int cep) {
 		this.cep = cep;
+	}
+	public int getNr_curso() {
+		return nr_curso;
+	}
+	public void setNr_curso(int nr_curso) {
+		this.nr_curso = nr_curso;
 	}
 
 }

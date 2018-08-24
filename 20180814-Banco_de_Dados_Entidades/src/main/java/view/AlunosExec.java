@@ -26,6 +26,9 @@ public class AlunosExec extends JFrame {
 	
 	JTextField txtCep = new JTextField();
 	JLabel cep = new JLabel("CEP: ");
+	
+	JTextField txtNr_curso = new JTextField();
+	JLabel nr_curso = new JLabel("Nº DO CURSO: ");
 
 	JButton btnSalvar = new JButton("Salvar");
 	
@@ -36,7 +39,7 @@ public class AlunosExec extends JFrame {
 		
 		paine.add(nome);
 		paine.add(txtNome);
-		nome.setBounds(10, 15, 45, 30);
+		nome.setBounds(10, 15, 70, 30);
 		txtNome.setBounds(90, 15, 225, 30);
 		
 		paine.add(end);
@@ -53,6 +56,11 @@ public class AlunosExec extends JFrame {
 		paine.add(txtCep);
 		cep.setBounds(10, 120, 70, 30);
 		txtCep.setBounds(90, 120, 225, 30);
+		
+		paine.add(nr_curso);
+		paine.add(txtNr_curso);
+		nr_curso.setBounds(10, 155, 70, 30);
+		txtNr_curso.setBounds(90, 155, 225, 30);
 		
 		paine.add(btnSalvar);
 		btnSalvar.setBounds(250, 250, 130, 30);

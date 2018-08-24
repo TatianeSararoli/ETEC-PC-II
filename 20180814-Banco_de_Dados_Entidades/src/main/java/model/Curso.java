@@ -1,33 +1,13 @@
 package model;
 
 public class Curso {
-	private String nome;
-	private String endereco;
-	private String bairro;
-	private int cep;
-	public String getNome() {
-		return nome;
+	private String nome_curso;
+	public String getNome_curso() {
+		return nome_curso;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNome_curso(String nome_curso) {
+		this.nome_curso = nome_curso;
 	}
-	public String getEndereco() {
-		return endereco;
-	}
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
-	public String getBairro() {
-		return bairro;
-	}
-	public void setBairro(String bairro) {
-		this.bairro = bairro;
-	}
-	public int getCep() {
-		return cep;
-	}
-	public void setCep(int cep) {
-		this.cep = cep;
-	}
+	
 
 }

@@ -12,20 +12,20 @@ import model.Historico;
 public class HistoricoJdbcDAO {
 private Connection conn;
 	
-	public DisciplinaJdbcDAO(Connection conn) {
+	public HistoricoJdbcDAO(Connection conn) {
 		this.conn = conn;
 	}
 	
-	public void salvar(Disciplina c) throws SQLException {
-		String sql = "insert into alunos (nome, endereco, bairro, cep) values ('"+c.getNome()+"','"+c.getEndereco()+"','"+c.getBairro()+"','"+c.getCep()+"')";
+	public void salvar(Historico c) throws SQLException {
+		String sql = "insert into historico (nome, endereco, bairro, cep) values ('"+c.getNome()+"','"+c.getEndereco()+"','"+c.getBairro()+"','"+c.getCep()+"')";
 		System.out.println(sql);
 		PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 		prepareStatement.executeUpdate();
 		prepareStatement.close(); 
 	}
 	
-	public void alterar(Disciplina c) {
-		String sql = "update alunos set nome='"+c.getNome()+"',endereco='"+c.getEndereco()+"',bairro='"+c.getBairro()+"';";
+	public void alterar(Historico c) {
+		String sql = "update historico set nome='"+c.getNome()+"',endereco='"+c.getEndereco()+"',bairro='"+c.getBairro()+"';";
 		System.out.println(sql);
 		PreparedStatement prepareStatement;
 		try {
@@ -37,10 +37,10 @@ private Connection conn;
 		}		
 	}
 	
-	public List<Disciplina> listar() {
-		String sql = "select * from alunos";
+	public List<Historico> listar() {
+		String sql = "select * from historico";
 		System.out.println(sql);
-		List<Disciplina> disciplina = new ArrayList<Disciplina>();
+		List<Historico> historico = new ArrayList<Historico>();
 		try {
 			PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 			ResultSet rs = prepareStatement.executeQuery();
@@ -49,21 +49,21 @@ private Connection conn;
 				String endereco = rs.getString("endereco");
 				String bairro = rs.getString("bairro");
 				int cep = rs.getInt("cep"); 
-				Disciplina disciplina = new Disciplina();
-				disciplina.setNome(nome);
-				disciplina.setEndereco(endereco);
-				disciplina.setBairro(bairro);
-				disciplina.setCep(cep);
+				Historico histor = new Historico();
+				histor.setNome(nome);
+				histor.setEndereco(endereco);
+				histor.setBairro(bairro);
+				histor.setCep(cep);
 			}
 			prepareStatement.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return Disciplina;
+		return Historico;
 	}
 	
 	public void excluir(int id) throws SQLException {
-		String sql = "delete from alunos where id =" +id;
+		String sql = "delete from historico where id =" +id;
 		System.out.println(sql);
 		PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 		prepareStatement.executeUpdate();
