@@ -17,7 +17,7 @@ private Connection conn;
 	}
 	
 	public void salvar(Historico c) throws SQLException {
-		String sql = "insert into historico (nome, endereco, bairro, cep) values ('"+c.getNome()+"','"+c.getEndereco()+"','"+c.getBairro()+"','"+c.getCep()+"')";
+		String sql = "insert into historico (matricula, id_disciplina, ano, semestre, nota, frequencia) values ('"+c.getMatricula()+"','"+c.getId_disciplina()+"','"+c.getAno()+"','"+c.getSemestre()+"','"+c.getNota()+"','"+c.getFrequencia()+"')";
 		System.out.println(sql);
 		PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 		prepareStatement.executeUpdate();
@@ -25,7 +25,7 @@ private Connection conn;
 	}
 	
 	public void alterar(Historico c) {
-		String sql = "update historico set nome='"+c.getNome()+"',endereco='"+c.getEndereco()+"',bairro='"+c.getBairro()+"';";
+		String sql = "update historico set matricula='"+c.getMatricula()+"',id_disciplina='"+c.getId_disciplina()+"',ano='"+c.getAno()+"',semestre='"+c.getSemestre()+"',nota='"+c.getNota()+"',frequencia='"+c.getFrequencia()+"';";
 		System.out.println(sql);
 		PreparedStatement prepareStatement;
 		try {
@@ -45,15 +45,19 @@ private Connection conn;
 			PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 			ResultSet rs = prepareStatement.executeQuery();
 			while (rs.next()) {
-				String nome = rs.getString("nome");
-				String endereco = rs.getString("endereco");
-				String bairro = rs.getString("bairro");
-				int cep = rs.getInt("cep"); 
+				int matricula = rs.getMatricula("matricula");
+				char id_disciplina = rs.getId_disciplina("id_disciplina");
+				int ano = rs.getAno("ano");
+				int semestre = rs.getSemestre("semestre");
+				double nota = rs.getNota("nota");
+				int frequencia = rs.getFrequencia("frequencia");
 				Historico histor = new Historico();
-				histor.setNome(nome);
-				histor.setEndereco(endereco);
-				histor.setBairro(bairro);
-				histor.setCep(cep);
+				histor.setMatricula(matricula);
+				histor.setId_disciplina(id_disciplina);
+				histor.setAno(ano);
+				histor.setSemestre(semestre);
+				histor.setNota(nota);
+				histor.setFrequencia(frequencia);
 			}
 			prepareStatement.close();
 		} catch (SQLException e) {
