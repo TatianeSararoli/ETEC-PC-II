@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class JdbUtil {
-	private static String connectionDriverClass="com.mysql.jdbc.Driver";
+	private static String connectionDriverClass="com.mysql.cj.jdbc.Driver";
 	private static String connectionUrl  = "jdbc:mysql://localhost/java?serverTimezone=UTC";
 	private static String connectionUsername="root";
 	private static String connectionPassword="";

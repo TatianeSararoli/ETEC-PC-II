@@ -7,16 +7,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Alunos;
+import model.Curso;
 
-public class AlunosJdbcDAO {
+public class CursoJdbcDAO {
 	private Connection conn;
 	
-	public AlunosJdbcDAO(Connection conn) {
+	public CursoJdbcDAO(Connection conn) {
 		this.conn = conn;
 	}
 	
-	public void salvar(Alunos c) throws SQLException {
+	public void salvar(Curso c) throws SQLException {
 		String sql = "insert into alunos (nome, endereco, bairro, cep) values ('"+c.getNome()+"','"+c.getEndereco()+"','"+c.getBairro()+"','"+c.getCep()+"')";
 		System.out.println(sql);
 		PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
@@ -24,7 +24,7 @@ public class AlunosJdbcDAO {
 		prepareStatement.close(); 
 	}
 	
-	public void alterar(Alunos c) {
+	public void alterar(Curso c) {
 		String sql = "update alunos set nome='"+c.getNome()+"',endereco='"+c.getEndereco()+"',bairro='"+c.getBairro()+"';";
 		System.out.println(sql);
 		PreparedStatement prepareStatement;
@@ -37,10 +37,10 @@ public class AlunosJdbcDAO {
 		}		
 	}
 	
-	public List<Alunos> listar() {
+	public List<Curso> listar() {
 		String sql = "select * from alunos";
 		System.out.println(sql);
-		List<Alunos> alunos = new ArrayList<Alunos>();
+		List<Curso> curso = new ArrayList<Curso>();
 		try {
 			PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 			ResultSet rs = prepareStatement.executeQuery();
@@ -49,17 +49,17 @@ public class AlunosJdbcDAO {
 				String endereco = rs.getString("endereco");
 				String bairro = rs.getString("bairro");
 				int cep = rs.getInt("cep"); 
-				Alunos aluno = new Alunos();
-				aluno.setNome(nome);
-				aluno.setEndereco(endereco);
-				aluno.setBairro(bairro);
-				aluno.setCep(cep);
+				Curso curso = new Curso();
+				curso.setNome(nome);
+				curso.setEndereco(endereco);
+				curso.setBairro(bairro);
+				curso.setCep(cep);
 			}
 			prepareStatement.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return alunos;
+		return curso;
 	}
 	
 	public void excluir(int id) throws SQLException {
