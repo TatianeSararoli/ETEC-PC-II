@@ -17,7 +17,7 @@ public class AlunosJdbcDAO {
 	}
 	
 	public void salvar(Alunos c) throws SQLException {
-		String sql = "insert into alunos (nome, endereco, bairro, cep, nr_curso) values ('"+c.getNome()+"','"+c.getEndereco()+"','"+c.getBairro()+"','"+c.getCep()+"','"+c.getNr_curso()+"')";
+		String sql = "insert into alunos (matricula, nome, endereco, bairro, cep, nr_curso) values ('"+c.getMatricula()+"','"+c.getNome()+"','"+c.getEndereco()+"','"+c.getBairro()+"','"+c.getCep()+"','"+c.getNr_curso()+"')";
 		System.out.println(sql);
 		PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 		prepareStatement.executeUpdate();
@@ -25,7 +25,7 @@ public class AlunosJdbcDAO {
 	}
 	
 	public void alterar(Alunos c) {
-		String sql = "update alunos set nome='"+c.getNome()+"',endereco='"+c.getEndereco()+"',bairro='"+c.getBairro()+"',cep="+c.getCep()+",nr_curso="+c.getNr_curso()+";";
+		String sql = "update alunos set matricula='"+c.getMatricula()+"',nome='"+c.getNome()+"',endereco='"+c.getEndereco()+"',bairro='"+c.getBairro()+"',cep="+c.getCep()+",nr_curso="+c.getNr_curso()+";";
 		System.out.println(sql);
 		PreparedStatement prepareStatement;
 		try {
@@ -45,6 +45,7 @@ public class AlunosJdbcDAO {
 			PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 			ResultSet rs = prepareStatement.executeQuery();
 			while (rs.next()) {
+				int matricula = rs.getInt("matricula");
 				String nome = rs.getString("nome");
 				String endereco = rs.getString("endereco");
 				String bairro = rs.getString("bairro");

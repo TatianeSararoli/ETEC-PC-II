@@ -10,7 +10,7 @@ import java.util.List;
 import model.Historico;
 
 public class HistoricoJdbcDAO {
-private Connection conn;
+	private Connection conn;
 	
 	public HistoricoJdbcDAO(Connection conn) {
 		this.conn = conn;
@@ -45,12 +45,13 @@ private Connection conn;
 			PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 			ResultSet rs = prepareStatement.executeQuery();
 			while (rs.next()) {
-				int matricula = rs.getMatricula("matricula");
-				char id_disciplina = rs.getId_disciplina("id_disciplina");
-				int ano = rs.getAno("ano");
-				int semestre = rs.getSemestre("semestre");
-				double nota = rs.getNota("nota");
-				int frequencia = rs.getFrequencia("frequencia");
+				int matricula = rs.getInt("matricula");
+				String x = rs.getString("id_disciplina");
+				char id_disciplina = x.charAt(0);
+				int ano = rs.getInt("ano");
+				int semestre = rs.getInt("semestre");
+				double nota = rs.getDouble("nota");
+				int frequencia = rs.getInt("frequencia");
 				Historico histor = new Historico();
 				histor.setMatricula(matricula);
 				histor.setId_disciplina(id_disciplina);
@@ -63,7 +64,7 @@ private Connection conn;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return Historico;
+		return historico;
 	}
 	
 	public void excluir(int id) throws SQLException {

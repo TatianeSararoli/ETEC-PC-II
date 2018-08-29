@@ -1,11 +1,18 @@
 package model;
 
 public class Alunos {
+	private int matricula;
 	private String nome;
 	private String endereco;
 	private String bairro;
 	private int cep;
 	private int nr_curso;
+	public int getMatricula() {
+		return matricula;
+	}
+	public void setMatricula(int matricula) {
+		this.matricula = matricula;
+	}
 	public String getNome() {
 		return nome;
 	}

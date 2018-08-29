@@ -15,6 +15,9 @@ import controller.JdbUtil;
 import model.Alunos;
 
 public class EntidadesExec extends JFrame {
+	JTextField txtMatricula = new JTextField();
+	JLabel matricula = new JLabel("MATRÍCULA: ");
+	
 	JTextField txtNome = new JTextField();
 	JLabel nome = new JLabel("NOME: ");
 	
@@ -37,30 +40,35 @@ public class EntidadesExec extends JFrame {
 		
 		Container paine = this.getContentPane();
 		
+		paine.add(matricula);
+		paine.add(txtMatricula);
+		matricula.setBounds(10, 15, 100, 30);
+		txtMatricula.setBounds(125, 15, 225, 30);
+		
 		paine.add(nome);
 		paine.add(txtNome);
-		nome.setBounds(10, 15, 70, 30);
-		txtNome.setBounds(90, 15, 225, 30);
+		nome.setBounds(10, 50, 100, 30);
+		txtNome.setBounds(125, 50, 225, 30);
 		
 		paine.add(end);
 		paine.add(txtEnd);
-		end.setBounds(10, 50, 70, 30);
-		txtEnd.setBounds(90, 50, 225, 30);
+		end.setBounds(10, 85, 100, 30);
+		txtEnd.setBounds(125, 85, 225, 30);
 		
 		paine.add(bairro);
 		paine.add(txtBairro);
-		bairro.setBounds(10, 85, 70, 30);
-		txtBairro.setBounds(90, 85, 225, 30);
+		bairro.setBounds(10, 120, 100, 30);
+		txtBairro.setBounds(125, 120, 225, 30);
 		
 		paine.add(cep);
 		paine.add(txtCep);
-		cep.setBounds(10, 120, 70, 30);
-		txtCep.setBounds(90, 120, 225, 30);
+		cep.setBounds(10, 155, 100, 30);
+		txtCep.setBounds(125, 155, 225, 30);
 		
 		paine.add(nr_curso);
 		paine.add(txtNr_curso);
-		nr_curso.setBounds(10, 155, 70, 30);
-		txtNr_curso.setBounds(90, 155, 225, 30);
+		nr_curso.setBounds(10, 190, 100, 30);
+		txtNr_curso.setBounds(125, 190, 225, 30);
 		
 		paine.add(btnSalvar);
 		btnSalvar.setBounds(250, 250, 130, 30);
@@ -68,9 +76,12 @@ public class EntidadesExec extends JFrame {
 			public void actionPerformed(ActionEvent e){
 				try {
 				Alunos alunos = new Alunos();
+				alunos.setMatricula(txtMatricula.getText());
 				alunos.setNome(txtNome.getText());
 				alunos.setEndereco(txtEnd.getText());
 				alunos.setBairro(txtBairro.getText());
+				alunos.setCep(txtCep.getText());
+				alunos.setNr_curso(txtNr_curso.getText());
 				
 				Connection connection = JdbUtil.getConnection();
 				AlunosJdbcDAO alunosJdbcDao = new AlunosJdbcDAO(connection);
