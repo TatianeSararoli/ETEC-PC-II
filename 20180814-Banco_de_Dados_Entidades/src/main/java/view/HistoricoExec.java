@@ -10,11 +10,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import controller.AlunosJdbcDAO;
+import controller.HistoricoJdbcDAO;
 import controller.JdbUtil;
-import model.Alunos;
+import model.Historico;
 
-public class AlunosExec extends JFrame {
+public class HistoricoExec extends JFrame {
 	JTextField txtMatricula = new JTextField();
 	JLabel matricula = new JLabel("MATRÍCULA: ");
 	
@@ -35,7 +35,7 @@ public class AlunosExec extends JFrame {
 
 	JButton btnSalvar = new JButton("Salvar");
 	
-	public AlunosExec() {
+	public HistoricoExec() {
 		super ("Cadastro Alunos");
 		
 		Container paine = this.getContentPane();
@@ -43,17 +43,17 @@ public class AlunosExec extends JFrame {
 		paine.add(matricula);
 		paine.add(txtMatricula);
 		matricula.setBounds(10, 15, 100, 30);
-		txtMatricula.setBounds(125, 15, 125, 30);
+		txtMatricula.setBounds(125, 15, 225, 30);
 		
 		paine.add(nome);
 		paine.add(txtNome);
 		nome.setBounds(10, 50, 100, 30);
-		txtNome.setBounds(125, 50, 450, 30);
+		txtNome.setBounds(125, 50, 225, 30);
 		
 		paine.add(end);
 		paine.add(txtEnd);
 		end.setBounds(10, 85, 100, 30);
-		txtEnd.setBounds(125, 85, 450, 30);
+		txtEnd.setBounds(125, 85, 225, 30);
 		
 		paine.add(bairro);
 		paine.add(txtBairro);
@@ -63,30 +63,30 @@ public class AlunosExec extends JFrame {
 		paine.add(cep);
 		paine.add(txtCep);
 		cep.setBounds(10, 155, 100, 30);
-		txtCep.setBounds(125, 155, 125, 30);
+		txtCep.setBounds(125, 155, 225, 30);
 		
 		paine.add(nr_curso);
 		paine.add(txtNr_curso);
 		nr_curso.setBounds(10, 190, 100, 30);
-		txtNr_curso.setBounds(125, 190, 125, 30);
+		txtNr_curso.setBounds(125, 190, 225, 30);
 		
 		paine.add(btnSalvar);
 		btnSalvar.setBounds(250, 250, 130, 30);
 		btnSalvar.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				try {
-				Alunos alunos = new Alunos();
-				alunos.setMatricula(txtMatricula.getText());
-				alunos.setNome(txtNome.getText());
-				alunos.setEndereco(txtEnd.getText());
-				alunos.setBairro(txtBairro.getText());
-				alunos.setCep(txtCep.getText());
-				alunos.setNr_curso(txtNr_curso.getText());
+				Historico historico = new Historico();
+				historico.setMatricula(txtMatricula.getText());
+				historico.setNome(txtNome.getText());
+				historico.setEndereco(txtEnd.getText());
+				historico.setBairro(txtBairro.getText());
+				historico.setCep(txtCep.getText());
+				historico.setNr_curso(txtNr_curso.getText());
 				
 				Connection connection = JdbUtil.getConnection();
-				AlunosJdbcDAO alunosJdbcDao = new AlunosJdbcDAO(connection);
+				HistoricoJdbcDAO historicoJdbcDao = new HistoricoJdbcDAO(connection);
 				
-				alunosJdbcDao.salvar(alunos);
+				historicoJdbcDao.salvar(historico);
 				
 				}catch(Exception ex) {
 					ex.printStackTrace();
@@ -102,7 +102,7 @@ public class AlunosExec extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		AlunosExec alunosexec = new AlunosExec();
+		HistoricoExec historicoexec = new HistoricoExec();
 
 	}
 

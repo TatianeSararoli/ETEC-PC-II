@@ -3,90 +3,80 @@ package view;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
-
-import controller.AlunosJdbcDAO;
-import controller.JdbUtil;
-import model.Alunos;
 
 public class EntidadesExec extends JFrame {
-	JTextField txtMatricula = new JTextField();
-	JLabel matricula = new JLabel("MATRÍCULA: ");
 	
-	JTextField txtNome = new JTextField();
-	JLabel nome = new JLabel("NOME: ");
+	JLabel acesso = new JLabel("Escolha uma das opções de acesso: ");
 	
-	JTextField txtEnd = new JTextField();
-	JLabel end = new JLabel("ENDEREÇO: ");
-	
-	JTextField txtBairro = new JTextField();
-	JLabel bairro = new JLabel("BAIRRO: ");
-	
-	JTextField txtCep = new JTextField();
-	JLabel cep = new JLabel("CEP: ");
-	
-	JTextField txtNr_curso = new JTextField();
-	JLabel nr_curso = new JLabel("Nº DO CURSO: ");
-
-	JButton btnSalvar = new JButton("Salvar");
+	JButton btnAlunos = new JButton("ALUNO");
+	JButton btnCurso = new JButton("CURSO");
+	JButton btnDisciplina = new JButton("DISCIPLINA");
+	JButton btnHistorico = new JButton("HISTÓRICO");
 	
 	public EntidadesExec() {
-		super ("Cadastro Alunos");
+		super ("OPÇÕES");
 		
 		Container paine = this.getContentPane();
 		
-		paine.add(matricula);
-		paine.add(txtMatricula);
-		matricula.setBounds(10, 15, 100, 30);
-		txtMatricula.setBounds(125, 15, 225, 30);
+		paine.add(acesso);
+		acesso.setBounds(150, 15, 500, 30);
 		
-		paine.add(nome);
-		paine.add(txtNome);
-		nome.setBounds(10, 50, 100, 30);
-		txtNome.setBounds(125, 50, 225, 30);
-		
-		paine.add(end);
-		paine.add(txtEnd);
-		end.setBounds(10, 85, 100, 30);
-		txtEnd.setBounds(125, 85, 225, 30);
-		
-		paine.add(bairro);
-		paine.add(txtBairro);
-		bairro.setBounds(10, 120, 100, 30);
-		txtBairro.setBounds(125, 120, 225, 30);
-		
-		paine.add(cep);
-		paine.add(txtCep);
-		cep.setBounds(10, 155, 100, 30);
-		txtCep.setBounds(125, 155, 225, 30);
-		
-		paine.add(nr_curso);
-		paine.add(txtNr_curso);
-		nr_curso.setBounds(10, 190, 100, 30);
-		txtNr_curso.setBounds(125, 190, 225, 30);
-		
-		paine.add(btnSalvar);
-		btnSalvar.setBounds(250, 250, 130, 30);
-		btnSalvar.addActionListener(new ActionListener(){
+		paine.add(btnAlunos);
+		btnAlunos.setBounds(200, 85, 100, 30);
+		btnAlunos.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				try {
-				Alunos alunos = new Alunos();
-				alunos.setMatricula(txtMatricula.getText());
-				alunos.setNome(txtNome.getText());
-				alunos.setEndereco(txtEnd.getText());
-				alunos.setBairro(txtBairro.getText());
-				alunos.setCep(txtCep.getText());
-				alunos.setNr_curso(txtNr_curso.getText());
+								
+				AlunosExec alunosExec = new AlunosExec();
 				
-				Connection connection = JdbUtil.getConnection();
-				AlunosJdbcDAO alunosJdbcDao = new AlunosJdbcDAO(connection);
+				}catch(Exception ex) {
+					ex.printStackTrace();
+				}
 				
-				alunosJdbcDao.salvar(alunos);
+			}
+		});
+		
+		paine.add(btnCurso);
+		btnCurso.setBounds(200, 120, 100, 30);
+		btnCurso.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				try {
+								
+				CursoExec cursoExec = new CursoExec();
+				
+				}catch(Exception ex) {
+					ex.printStackTrace();
+				}
+				
+			}
+		});
+		
+		paine.add(btnDisciplina);
+		btnDisciplina.setBounds(200, 155, 100, 30);
+		btnDisciplina.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				try {
+								
+					DisciplinaExec disciplinaExec = new DisciplinaExec();
+				
+				}catch(Exception ex) {
+					ex.printStackTrace();
+				}
+				
+			}
+		});
+		
+		paine.add(btnHistorico);
+		btnHistorico.setBounds(200, 190, 100, 30);
+		btnHistorico.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				try {
+								
+				HistoricoExec historicoExec = new HistoricoExec();
 				
 				}catch(Exception ex) {
 					ex.printStackTrace();
@@ -97,7 +87,7 @@ public class EntidadesExec extends JFrame {
 		
 		this.setLayout(null);
 		this.setVisible(true);
-		this.setSize(600, 330);
+		this.setSize(500, 330);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 
