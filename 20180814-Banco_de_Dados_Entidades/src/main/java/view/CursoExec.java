@@ -15,6 +15,9 @@ import controller.JdbUtil;
 import model.Curso;
 
 public class CursoExec extends JFrame {
+	JTextField txtNr_curso = new JTextField();
+	JLabel nr_curso = new JLabel("Nº DO CURSO: ");
+	
 	JTextField txtNome_curso = new JTextField();
 	JLabel nome_curso = new JLabel("CURSO: ");
 
@@ -24,6 +27,11 @@ public class CursoExec extends JFrame {
 		super ("Cadastro de Cursos");
 		
 		Container paine = this.getContentPane();
+		
+		paine.add(nr_curso);
+		paine.add(txtNr_curso);
+		nr_curso.setBounds(10, 15, 100, 30);
+		txtNr_curso.setBounds(125, 15, 125, 30);
 		
 		paine.add(nome_curso);
 		paine.add(txtNome_curso);
@@ -36,6 +44,7 @@ public class CursoExec extends JFrame {
 			public void actionPerformed(ActionEvent e){
 				try {
 				Curso curso = new Curso();
+				curso.setNr_curso(Integer.parseInt(txtNr_curso.getText()));
 				curso.setNome_curso(txtNome_curso.getText());
 				
 				Connection connection = JdbUtil.getConnection();

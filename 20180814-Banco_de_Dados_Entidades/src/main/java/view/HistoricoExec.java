@@ -19,7 +19,7 @@ public class HistoricoExec extends JFrame {
 	JLabel matricula = new JLabel("MATRÍCULA: ");
 	
 	JTextField txtId_disciplina = new JTextField();
-	JLabel id_disciplina = new JLabel("SIGLA DISCIPLINA: ");
+	JLabel id_disciplina = new JLabel("SIGLA DISCIPL.: ");
 	
 	JTextField txtAno = new JTextField();
 	JLabel ano = new JLabel("ANO: ");
@@ -36,7 +36,7 @@ public class HistoricoExec extends JFrame {
 	JButton btnSalvar = new JButton("Salvar");
 	
 	public HistoricoExec() {
-		super ("Cadastro Alunos");
+		super ("Cadastro de Históricos");
 		
 		Container paine = this.getContentPane();
 		

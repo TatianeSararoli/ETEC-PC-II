@@ -16,7 +16,7 @@ import model.Disciplina;
 
 public class DisciplinaExec extends JFrame {
 	JTextField txtId_disciplina = new JTextField();
-	JLabel id_disciplina = new JLabel("DISCIPLINA: ");
+	JLabel id_disciplina = new JLabel("SIGLA DISCIPL.: ");
 	
 	JTextField txtNome_disciplina = new JTextField();
 	JLabel nome_disciplina = new JLabel("DISCIPLINA: ");
@@ -27,14 +27,14 @@ public class DisciplinaExec extends JFrame {
 	JButton btnSalvar = new JButton("Salvar");
 	
 	public DisciplinaExec() {
-		super ("Cadastro da Disciplina");
+		super ("Cadastro de Disciplinas");
 		
 		Container paine = this.getContentPane();
 		
 		paine.add(id_disciplina);
 		paine.add(txtId_disciplina);
-		id_disciplina.setBounds(10, 50, 100, 30);
-		txtId_disciplina.setBounds(125, 50, 225, 30);
+		id_disciplina.setBounds(10, 15, 100, 30);
+		txtId_disciplina.setBounds(125, 15, 225, 30);
 		
 		paine.add(nome_disciplina);
 		paine.add(txtNome_disciplina);
@@ -52,6 +52,7 @@ public class DisciplinaExec extends JFrame {
 			public void actionPerformed(ActionEvent e){
 				try {
 				Disciplina disciplina = new Disciplina();
+				disciplina.setId_disciplina(txtId_disciplina.getText());
 				disciplina.setNome_disciplina(txtNome_disciplina.getText());
 				disciplina.setCarga_horaria(Integer.parseInt(txtCarga_horaria.getText()));
 								
