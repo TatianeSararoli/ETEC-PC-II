@@ -16,12 +16,12 @@ import model.Curso;
 
 public class CursoExec extends JFrame {
 	JTextField txtNome_curso = new JTextField();
-	JLabel nome_curso = new JLabel("NOME DO CURSO: ");
+	JLabel nome_curso = new JLabel("CURSO: ");
 
 	JButton btnSalvar = new JButton("Salvar");
 	
 	public CursoExec() {
-		super ("Cadastro Alunos");
+		super ("Cadastro de Cursos");
 		
 		Container paine = this.getContentPane();
 		
@@ -36,12 +36,7 @@ public class CursoExec extends JFrame {
 			public void actionPerformed(ActionEvent e){
 				try {
 				Curso curso = new Curso();
-				curso.setMatricula(txtMatricula.getText());
-				curso.setNome(txtNome.getText());
-				curso.setEndereco(txtEnd.getText());
-				curso.setBairro(txtBairro.getText());
-				curso.setCep(txtCep.getText());
-				curso.setNr_curso(txtNr_curso.getText());
+				curso.setNome_curso(txtNome_curso.getText());
 				
 				Connection connection = JdbUtil.getConnection();
 				CursoJdbcDAO cursoJdbcDao = new CursoJdbcDAO(connection);

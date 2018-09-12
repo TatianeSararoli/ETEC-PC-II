@@ -17,7 +17,7 @@ public class DisciplinaJdbcDAO {
 	}
 	
 	public void salvar(Disciplina c) throws SQLException {
-		String sql = "insert into disciplina (nome_disciplina, carga_horaria) values ('"+c.getNome_disciplina()+"','"+c.getCarga_horaria()+"')";
+		String sql = "insert into disciplina (id_disciplina, nome_disciplina, carga_horaria) values ('"+c.getId_disciplina()+"','"+c.getNome_disciplina()+"','"+c.getCarga_horaria()+"')";
 		System.out.println(sql);
 		PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 		prepareStatement.executeUpdate();
@@ -25,7 +25,7 @@ public class DisciplinaJdbcDAO {
 	}
 	
 	public void alterar(Disciplina c) {
-		String sql = "update disciplina set nome_disciplina='"+c.getNome_disciplina()+"',carga_horaria='"+c.getCarga_horaria()+"';";
+		String sql = "update disciplina set id_disciplina='"+c.getId_disciplina()+"',nome_disciplina='"+c.getNome_disciplina()+"',carga_horaria='"+c.getCarga_horaria()+"';";
 		System.out.println(sql);
 		PreparedStatement prepareStatement;
 		try {
@@ -45,9 +45,11 @@ public class DisciplinaJdbcDAO {
 			PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 			ResultSet rs = prepareStatement.executeQuery();
 			while (rs.next()) {
+				String id_disciplina = rs.getString("id_disciplina");
 				String nome_disciplina = rs.getString("nome_disciplina");
 				int carga_horaria = rs.getInt("carga_horaria"); 
 				Disciplina discipl = new Disciplina();
+				discipl.setId_disciplina(id_disciplina);
 				discipl.setNome_disciplina(nome_disciplina);
 				discipl.setCarga_horaria(carga_horaria);
 			}

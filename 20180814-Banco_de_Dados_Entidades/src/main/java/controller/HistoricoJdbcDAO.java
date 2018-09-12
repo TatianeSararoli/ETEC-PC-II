@@ -46,8 +46,7 @@ public class HistoricoJdbcDAO {
 			ResultSet rs = prepareStatement.executeQuery();
 			while (rs.next()) {
 				int matricula = rs.getInt("matricula");
-				String x = rs.getString("id_disciplina");
-				char id_disciplina = x.charAt(0);
+				String id_disciplina = rs.getString("id_disciplina");
 				int ano = rs.getInt("ano");
 				int semestre = rs.getInt("semestre");
 				double nota = rs.getDouble("nota");

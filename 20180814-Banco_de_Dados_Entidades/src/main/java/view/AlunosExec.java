@@ -36,7 +36,7 @@ public class AlunosExec extends JFrame {
 	JButton btnSalvar = new JButton("Salvar");
 	
 	public AlunosExec() {
-		super ("Cadastro Alunos");
+		super ("Cadastro de Alunos");
 		
 		Container paine = this.getContentPane();
 		
@@ -76,12 +76,12 @@ public class AlunosExec extends JFrame {
 			public void actionPerformed(ActionEvent e){
 				try {
 				Alunos alunos = new Alunos();
-				alunos.setMatricula(txtMatricula.getText());
+				alunos.setMatricula(Integer.parseInt(txtMatricula.getText()));
 				alunos.setNome(txtNome.getText());
 				alunos.setEndereco(txtEnd.getText());
 				alunos.setBairro(txtBairro.getText());
-				alunos.setCep(txtCep.getText());
-				alunos.setNr_curso(txtNr_curso.getText());
+				alunos.setCep(Integer.parseInt(txtCep.getText()));
+				alunos.setNr_curso(Integer.parseInt(txtNr_curso.getText()));
 				
 				Connection connection = JdbUtil.getConnection();
 				AlunosJdbcDAO alunosJdbcDao = new AlunosJdbcDAO(connection);

@@ -11,65 +11,40 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import controller.DisciplinaJdbcDAO;
+import controller.JdbUtil;
 import model.Disciplina;
 
-
-
 public class DisciplinaExec extends JFrame {
-	JTextField txtMatricula = new JTextField();
-	JLabel matricula = new JLabel("MATRÍCULA: ");
+	JTextField txtId_disciplina = new JTextField();
+	JLabel id_disciplina = new JLabel("DISCIPLINA: ");
 	
-	JTextField txtNome = new JTextField();
-	JLabel nome = new JLabel("NOME: ");
+	JTextField txtNome_disciplina = new JTextField();
+	JLabel nome_disciplina = new JLabel("DISCIPLINA: ");
 	
-	JTextField txtEnd = new JTextField();
-	JLabel end = new JLabel("ENDEREÇO: ");
+	JTextField txtCarga_horaria = new JTextField();
+	JLabel carga_horaria = new JLabel("CARGA HORÁRIA: ");
 	
-	JTextField txtBairro = new JTextField();
-	JLabel bairro = new JLabel("BAIRRO: ");
-	
-	JTextField txtCep = new JTextField();
-	JLabel cep = new JLabel("CEP: ");
-	
-	JTextField txtNr_curso = new JTextField();
-	JLabel nr_curso = new JLabel("Nº DO CURSO: ");
-
 	JButton btnSalvar = new JButton("Salvar");
 	
 	public DisciplinaExec() {
-		super ("Cadastro Alunos");
+		super ("Cadastro da Disciplina");
 		
 		Container paine = this.getContentPane();
 		
-		paine.add(matricula);
-		paine.add(txtMatricula);
-		matricula.setBounds(10, 15, 100, 30);
-		txtMatricula.setBounds(125, 15, 225, 30);
+		paine.add(id_disciplina);
+		paine.add(txtId_disciplina);
+		id_disciplina.setBounds(10, 50, 100, 30);
+		txtId_disciplina.setBounds(125, 50, 225, 30);
 		
-		paine.add(nome);
-		paine.add(txtNome);
-		nome.setBounds(10, 50, 100, 30);
-		txtNome.setBounds(125, 50, 225, 30);
+		paine.add(nome_disciplina);
+		paine.add(txtNome_disciplina);
+		nome_disciplina.setBounds(10, 50, 100, 30);
+		txtNome_disciplina.setBounds(125, 50, 225, 30);
 		
-		paine.add(end);
-		paine.add(txtEnd);
-		end.setBounds(10, 85, 100, 30);
-		txtEnd.setBounds(125, 85, 225, 30);
-		
-		paine.add(bairro);
-		paine.add(txtBairro);
-		bairro.setBounds(10, 120, 100, 30);
-		txtBairro.setBounds(125, 120, 225, 30);
-		
-		paine.add(cep);
-		paine.add(txtCep);
-		cep.setBounds(10, 155, 100, 30);
-		txtCep.setBounds(125, 155, 225, 30);
-		
-		paine.add(nr_curso);
-		paine.add(txtNr_curso);
-		nr_curso.setBounds(10, 190, 100, 30);
-		txtNr_curso.setBounds(125, 190, 225, 30);
+		paine.add(carga_horaria);
+		paine.add(txtCarga_horaria);
+		carga_horaria.setBounds(10, 85, 100, 30);
+		txtCarga_horaria.setBounds(125, 85, 225, 30);
 		
 		paine.add(btnSalvar);
 		btnSalvar.setBounds(250, 250, 130, 30);
@@ -77,13 +52,9 @@ public class DisciplinaExec extends JFrame {
 			public void actionPerformed(ActionEvent e){
 				try {
 				Disciplina disciplina = new Disciplina();
-				disciplina.setMatricula(txtMatricula.getText());
-				disciplina.setNome(txtNome.getText());
-				disciplina.setEndereco(txtEnd.getText());
-				disciplina.setBairro(txtBairro.getText());
-				disciplina.setCep(txtCep.getText());
-				disciplina.setNr_curso(txtNr_curso.getText());
-				
+				disciplina.setNome_disciplina(txtNome_disciplina.getText());
+				disciplina.setCarga_horaria(Integer.parseInt(txtCarga_horaria.getText()));
+								
 				Connection connection = JdbUtil.getConnection();
 				DisciplinaJdbcDAO disciplinaJdbcDao = new DisciplinaJdbcDAO(connection);
 				

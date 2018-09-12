@@ -18,21 +18,21 @@ public class HistoricoExec extends JFrame {
 	JTextField txtMatricula = new JTextField();
 	JLabel matricula = new JLabel("MATRÍCULA: ");
 	
-	JTextField txtNome = new JTextField();
-	JLabel nome = new JLabel("NOME: ");
+	JTextField txtId_disciplina = new JTextField();
+	JLabel id_disciplina = new JLabel("SIGLA DISCIPLINA: ");
 	
-	JTextField txtEnd = new JTextField();
-	JLabel end = new JLabel("ENDEREÇO: ");
+	JTextField txtAno = new JTextField();
+	JLabel ano = new JLabel("ANO: ");
 	
-	JTextField txtBairro = new JTextField();
-	JLabel bairro = new JLabel("BAIRRO: ");
+	JTextField txtSemestre = new JTextField();
+	JLabel semestre = new JLabel("SEMESTRE: ");
 	
-	JTextField txtCep = new JTextField();
-	JLabel cep = new JLabel("CEP: ");
+	JTextField txtNota = new JTextField();
+	JLabel nota = new JLabel("NOTA: ");
 	
-	JTextField txtNr_curso = new JTextField();
-	JLabel nr_curso = new JLabel("Nº DO CURSO: ");
-
+	JTextField txtFrequencia = new JTextField();
+	JLabel frequencia = new JLabel("FREQUÊNCIA: ");
+	
 	JButton btnSalvar = new JButton("Salvar");
 	
 	public HistoricoExec() {
@@ -45,30 +45,30 @@ public class HistoricoExec extends JFrame {
 		matricula.setBounds(10, 15, 100, 30);
 		txtMatricula.setBounds(125, 15, 225, 30);
 		
-		paine.add(nome);
-		paine.add(txtNome);
-		nome.setBounds(10, 50, 100, 30);
-		txtNome.setBounds(125, 50, 225, 30);
+		paine.add(id_disciplina);
+		paine.add(txtId_disciplina);
+		id_disciplina.setBounds(10, 50, 100, 30);
+		txtId_disciplina.setBounds(125, 50, 225, 30);
 		
-		paine.add(end);
-		paine.add(txtEnd);
-		end.setBounds(10, 85, 100, 30);
-		txtEnd.setBounds(125, 85, 225, 30);
+		paine.add(ano);
+		paine.add(txtAno);
+		ano.setBounds(10, 85, 100, 30);
+		txtAno.setBounds(125, 85, 225, 30);
 		
-		paine.add(bairro);
-		paine.add(txtBairro);
-		bairro.setBounds(10, 120, 100, 30);
-		txtBairro.setBounds(125, 120, 225, 30);
+		paine.add(semestre);
+		paine.add(txtSemestre);
+		semestre.setBounds(10, 120, 100, 30);
+		txtSemestre.setBounds(125, 120, 225, 30);
 		
-		paine.add(cep);
-		paine.add(txtCep);
-		cep.setBounds(10, 155, 100, 30);
-		txtCep.setBounds(125, 155, 225, 30);
+		paine.add(nota);
+		paine.add(txtNota);
+		nota.setBounds(10, 155, 100, 30);
+		txtNota.setBounds(125, 155, 225, 30);
 		
-		paine.add(nr_curso);
-		paine.add(txtNr_curso);
-		nr_curso.setBounds(10, 190, 100, 30);
-		txtNr_curso.setBounds(125, 190, 225, 30);
+		paine.add(frequencia);
+		paine.add(txtFrequencia);
+		frequencia.setBounds(10, 190, 100, 30);
+		txtFrequencia.setBounds(125, 190, 225, 30);
 		
 		paine.add(btnSalvar);
 		btnSalvar.setBounds(250, 250, 130, 30);
@@ -76,12 +76,12 @@ public class HistoricoExec extends JFrame {
 			public void actionPerformed(ActionEvent e){
 				try {
 				Historico historico = new Historico();
-				historico.setMatricula(txtMatricula.getText());
-				historico.setNome(txtNome.getText());
-				historico.setEndereco(txtEnd.getText());
-				historico.setBairro(txtBairro.getText());
-				historico.setCep(txtCep.getText());
-				historico.setNr_curso(txtNr_curso.getText());
+				historico.setMatricula(Integer.parseInt(txtMatricula.getText()));
+				historico.setId_disciplina(txtId_disciplina.getText());
+				historico.setAno(Integer.parseInt(txtAno.getText()));
+				historico.setSemestre(Integer.parseInt(txtSemestre.getText()));
+				historico.setNota(Double.parseDouble(txtNota.getText()));
+				historico.setFrequencia(Integer.parseInt(txtFrequencia.getText()));
 				
 				Connection connection = JdbUtil.getConnection();
 				HistoricoJdbcDAO historicoJdbcDao = new HistoricoJdbcDAO(connection);

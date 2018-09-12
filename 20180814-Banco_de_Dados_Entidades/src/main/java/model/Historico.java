@@ -2,7 +2,7 @@ package model;
 
 public class Historico {
 	private int matricula;
-	private char id_disciplina;
+	private String id_disciplina;
 	private int ano;
 	private int semestre;
 	private double nota;
@@ -13,10 +13,10 @@ public class Historico {
 	public void setMatricula(int matricula) {
 		this.matricula = matricula;
 	}
-	public char getId_disciplina() {
+	public String getId_disciplina() {
 		return id_disciplina;
 	}
-	public void setId_disciplina(char id_disciplina) {
+	public void setId_disciplina(String id_disciplina) {
 		this.id_disciplina = id_disciplina;
 	}
 	public int getAno() {
