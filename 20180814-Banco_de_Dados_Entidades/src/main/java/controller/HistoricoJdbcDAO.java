@@ -66,8 +66,8 @@ public class HistoricoJdbcDAO {
 		return historico;
 	}
 	
-	public void excluir(int id) throws SQLException {
-		String sql = "delete from historico where id =" +id;
+	public void excluir(Historico historico) throws SQLException {
+		String sql = "delete from historico where matricula =" +historico.getMatricula();
 		System.out.println(sql);
 		PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 		prepareStatement.executeUpdate();

@@ -58,8 +58,8 @@ public class CursoJdbcDAO {
 		return curso;
 	}
 	
-	public void excluir(int id) throws SQLException {
-		String sql = "delete from alunos where id =" +id;
+	public void excluir(Curso curso) throws SQLException {
+		String sql = "delete from curso where nr_curso =" +curso.getNr_curso();
 		System.out.println(sql);
 		PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 		prepareStatement.executeUpdate();

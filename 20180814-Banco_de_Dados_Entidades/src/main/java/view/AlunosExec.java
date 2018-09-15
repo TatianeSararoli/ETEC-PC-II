@@ -14,7 +14,7 @@ import controller.AlunosJdbcDAO;
 import controller.JdbUtil;
 import model.Alunos;
 
-public class AlunosExec extends JFrame {
+public class AlunosExec extends JFrame {	
 	JTextField txtMatricula = new JTextField();
 	JLabel matricula = new JLabel("MATRÍCULA: ");
 	
@@ -159,19 +159,6 @@ public class AlunosExec extends JFrame {
 			}
 		});
 		
-		btnVoltar.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				try {
-								
-				EntidadesExec entidadesExec = new EntidadesExec();
-				
-				}catch(Exception ex) {
-					ex.printStackTrace();
-				}
-				
-			}
-		});
-		
 		paine.add(btnVoltar);
 		btnVoltar.setBounds(470, 250, 100, 30);
 		btnVoltar.addActionListener(new ActionListener(){
@@ -186,10 +173,10 @@ public class AlunosExec extends JFrame {
 				
 			}
 		});
-		
+						
 		this.setLayout(null);
 		this.setVisible(true);
-		this.setSize(600, 330);
+		this.setSize(600, 630);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 

@@ -52,6 +52,7 @@ public class AlunosJdbcDAO {
 				int cep = rs.getInt("cep");
 				int nr_curso = rs.getInt("nr_curso");
 				Alunos aluno = new Alunos();
+				aluno.setMatricula(matricula);
 				aluno.setNome(nome);
 				aluno.setEndereco(endereco);
 				aluno.setBairro(bairro);
@@ -65,8 +66,8 @@ public class AlunosJdbcDAO {
 		return alunos;
 	}
 	
-	public void excluir(Alunos alunos) throws SQLException {
-		String sql = "delete from alunos where matricula =" + alunos.getMatricula();
+	public void excluir(Alunos aluno) throws SQLException {
+		String sql = "delete from alunos where matricula =" +aluno.getMatricula();
 		System.out.println(sql);
 		PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 		prepareStatement.executeUpdate();

@@ -5,12 +5,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>br.com.eteczonaleste</groupId>
-  <artifactId>20180810-Banco_de_Dados_Entidades</artifactId>
+  <artifactId>20180814-Banco_de_Dados_Entidades</artifactId>
   <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
 
-  <name>20180810-Banco_de_Dados_Entidades</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <name>20180814-Banco_de_Dados_Entidades</name>
+  <url>http://maven.apache.org</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -34,7 +34,7 @@
 </dependency>
     
   </dependencies>
-
+  
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>

@@ -82,10 +82,7 @@ public class DisciplinaExec extends JFrame {
 			public void actionPerformed(ActionEvent e){
 				try {
 				Disciplina disciplina = new Disciplina();
-				disciplina.setId_disciplina(txtId_disciplina.getText());
-				disciplina.setNome_disciplina(txtNome_disciplina.getText());
-				disciplina.setCarga_horaria(Integer.parseInt(txtCarga_horaria.getText()));
-								
+				
 				Connection connection = JdbUtil.getConnection();
 				DisciplinaJdbcDAO disciplinaJdbcDao = new DisciplinaJdbcDAO(connection);
 				
@@ -100,9 +97,40 @@ public class DisciplinaExec extends JFrame {
 		
 		paine.add(btnListar);
 		btnListar.setBounds(230, 250, 100, 30);
+		btnListar.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				try {
+								
+				Connection connection = JdbUtil.getConnection();
+				DisciplinaJdbcDAO disciplinaJdbcDao = new DisciplinaJdbcDAO(connection);
+				
+				System.out.print(disciplinaJdbcDao.listar());
+				
+				}catch(Exception ex) {
+					ex.printStackTrace();
+				}
+				
+			}
+		});
 		
 		paine.add(btnExcluir);
 		btnExcluir.setBounds(340, 250, 100, 30);
+		btnExcluir.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				try {
+				Disciplina disciplina = new Disciplina();
+								
+				Connection connection = JdbUtil.getConnection();
+				DisciplinaJdbcDAO disciplinaJdbcDao = new DisciplinaJdbcDAO(connection);
+				
+				disciplinaJdbcDao.excluir(disciplina);
+				
+				}catch(Exception ex) {
+					ex.printStackTrace();
+				}
+				
+			}
+		});
 		
 		paine.add(btnVoltar);
 		btnVoltar.setBounds(470, 250, 100, 30);
@@ -121,7 +149,7 @@ public class DisciplinaExec extends JFrame {
 		
 		this.setLayout(null);
 		this.setVisible(true);
-		this.setSize(600, 330);
+		this.setSize(600, 630);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 

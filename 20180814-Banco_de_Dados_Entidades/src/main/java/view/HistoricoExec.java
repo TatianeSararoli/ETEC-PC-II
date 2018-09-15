@@ -109,12 +109,6 @@ public class HistoricoExec extends JFrame {
 			public void actionPerformed(ActionEvent e){
 				try {
 				Historico historico = new Historico();
-				historico.setMatricula(Integer.parseInt(txtMatricula.getText()));
-				historico.setId_disciplina(txtId_disciplina.getText());
-				historico.setAno(Integer.parseInt(txtAno.getText()));
-				historico.setSemestre(Integer.parseInt(txtSemestre.getText()));
-				historico.setNota(Double.parseDouble(txtNota.getText()));
-				historico.setFrequencia(Integer.parseInt(txtFrequencia.getText()));
 				
 				Connection connection = JdbUtil.getConnection();
 				HistoricoJdbcDAO historicoJdbcDao = new HistoricoJdbcDAO(connection);
@@ -130,9 +124,40 @@ public class HistoricoExec extends JFrame {
 		
 		paine.add(btnListar);
 		btnListar.setBounds(230, 250, 100, 30);
+		btnListar.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				try {
+								
+				Connection connection = JdbUtil.getConnection();
+				HistoricoJdbcDAO historicoJdbcDao = new HistoricoJdbcDAO(connection);
+				
+				System.out.print(historicoJdbcDao.listar());
+				
+				}catch(Exception ex) {
+					ex.printStackTrace();
+				}
+				
+			}
+		});
 		
 		paine.add(btnExcluir);
 		btnExcluir.setBounds(340, 250, 100, 30);
+		btnExcluir.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				try {
+				Historico historico = new Historico();
+								
+				Connection connection = JdbUtil.getConnection();
+				HistoricoJdbcDAO historicoJdbcDao = new HistoricoJdbcDAO(connection);
+				
+				historicoJdbcDao.excluir(historico);
+				
+				}catch(Exception ex) {
+					ex.printStackTrace();
+				}
+				
+			}
+		});
 		
 		paine.add(btnVoltar);
 		btnVoltar.setBounds(470, 250, 100, 30);
@@ -151,7 +176,7 @@ public class HistoricoExec extends JFrame {
 		
 		this.setLayout(null);
 		this.setVisible(true);
-		this.setSize(600, 330);
+		this.setSize(600, 630);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 

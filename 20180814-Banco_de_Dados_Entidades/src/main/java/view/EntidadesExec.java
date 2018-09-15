@@ -21,6 +21,7 @@ public class EntidadesExec extends JFrame {
 		super ("OPÇÕES");
 		
 		Container paine = this.getContentPane();
+		paine.setLayout(null);
 		
 		paine.add(acesso);
 		acesso.setBounds(125, 15, 500, 30);

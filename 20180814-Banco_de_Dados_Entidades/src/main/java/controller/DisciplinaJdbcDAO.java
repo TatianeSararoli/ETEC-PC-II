@@ -60,8 +60,8 @@ public class DisciplinaJdbcDAO {
 		return disciplina;
 	}
 	
-	public void excluir(int id_disciplina) throws SQLException {
-		String sql = "delete from disciplina where id =" +id_disciplina;
+	public void excluir(Disciplina disciplina) throws SQLException {
+		String sql = "delete from disciplina where id_disciplina =" +disciplina.getId_disciplina();
 		System.out.println(sql);
 		PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 		prepareStatement.executeUpdate();

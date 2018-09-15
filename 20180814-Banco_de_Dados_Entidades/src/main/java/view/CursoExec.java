@@ -73,8 +73,6 @@ public class CursoExec extends JFrame {
 			public void actionPerformed(ActionEvent e){
 				try {
 				Curso curso = new Curso();
-				curso.setNr_curso(Integer.parseInt(txtNr_curso.getText()));
-				curso.setNome_curso(txtNome_curso.getText());
 				
 				Connection connection = JdbUtil.getConnection();
 				CursoJdbcDAO cursoJdbcDao = new CursoJdbcDAO(connection);
@@ -90,9 +88,40 @@ public class CursoExec extends JFrame {
 		
 		paine.add(btnListar);
 		btnListar.setBounds(230, 250, 100, 30);
+		btnListar.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				try {
+								
+				Connection connection = JdbUtil.getConnection();
+				CursoJdbcDAO cursoJdbcDao = new CursoJdbcDAO(connection);
+				
+				System.out.print(cursoJdbcDao.listar());
+				
+				}catch(Exception ex) {
+					ex.printStackTrace();
+				}
+				
+			}
+		});
 		
 		paine.add(btnExcluir);
 		btnExcluir.setBounds(340, 250, 100, 30);
+		btnExcluir.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				try {
+				Curso curso = new Curso();
+								
+				Connection connection = JdbUtil.getConnection();
+				CursoJdbcDAO cursoJdbcDao = new CursoJdbcDAO(connection);
+				
+				cursoJdbcDao.excluir(curso);
+				
+				}catch(Exception ex) {
+					ex.printStackTrace();
+				}
+				
+			}
+		});
 		
 		paine.add(btnVoltar);
 		btnVoltar.setBounds(470, 250, 100, 30);
@@ -109,9 +138,12 @@ public class CursoExec extends JFrame {
 			}
 		});
 		
+		paine.add(btnSalvar);
+		btnSalvar.setBounds(10, 250, 100, 30);
+		
 		this.setLayout(null);
 		this.setVisible(true);
-		this.setSize(600, 330);
+		this.setSize(600, 630);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 
