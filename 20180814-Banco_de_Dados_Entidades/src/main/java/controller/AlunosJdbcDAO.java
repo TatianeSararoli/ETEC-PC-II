@@ -25,7 +25,7 @@ public class AlunosJdbcDAO {
 	}
 	
 	public void alterar(Alunos c) {
-		String sql = "update alunos set matricula='"+c.getMatricula()+"',nome='"+c.getNome()+"',endereco='"+c.getEndereco()+"',bairro='"+c.getBairro()+"',cep="+c.getCep()+",nr_curso="+c.getNr_curso()+";";
+		String sql = "update alunos set nome='"+c.getNome()+"',endereco='"+c.getEndereco()+"',bairro='"+c.getBairro()+"',cep="+c.getCep()+",nr_curso="+c.getNr_curso()+";";
 		System.out.println(sql);
 		PreparedStatement prepareStatement;
 		try {
@@ -65,8 +65,8 @@ public class AlunosJdbcDAO {
 		return alunos;
 	}
 	
-	public void excluir(int matricula) throws SQLException {
-		String sql = "delete from alunos where matricula =" +matricula;
+	public void excluir(Alunos alunos) throws SQLException {
+		String sql = "delete from alunos where matricula =" + alunos.getMatricula();
 		System.out.println(sql);
 		PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 		prepareStatement.executeUpdate();

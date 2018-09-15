@@ -25,7 +25,7 @@ public class DisciplinaJdbcDAO {
 	}
 	
 	public void alterar(Disciplina c) {
-		String sql = "update disciplina set id_disciplina='"+c.getId_disciplina()+"',nome_disciplina='"+c.getNome_disciplina()+"',carga_horaria='"+c.getCarga_horaria()+"';";
+		String sql = "update disciplina set nome_disciplina='"+c.getNome_disciplina()+"',carga_horaria='"+c.getCarga_horaria()+"';";
 		System.out.println(sql);
 		PreparedStatement prepareStatement;
 		try {

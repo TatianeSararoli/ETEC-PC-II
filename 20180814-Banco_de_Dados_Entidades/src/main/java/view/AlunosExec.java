@@ -35,6 +35,14 @@ public class AlunosExec extends JFrame {
 
 	JButton btnSalvar = new JButton("Salvar");
 	
+	JButton btnAlterar = new JButton("Alterar");
+	
+	JButton btnListar = new JButton("Listar");
+	
+	JButton btnExcluir = new JButton("Excluir");
+	
+	JButton btnVoltar = new JButton("Voltar");
+	
 	public AlunosExec() {
 		super ("Cadastro de Alunos");
 		
@@ -71,7 +79,7 @@ public class AlunosExec extends JFrame {
 		txtNr_curso.setBounds(125, 190, 125, 30);
 		
 		paine.add(btnSalvar);
-		btnSalvar.setBounds(250, 250, 130, 30);
+		btnSalvar.setBounds(10, 250, 100, 30);
 		btnSalvar.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				try {
@@ -87,6 +95,90 @@ public class AlunosExec extends JFrame {
 				AlunosJdbcDAO alunosJdbcDao = new AlunosJdbcDAO(connection);
 				
 				alunosJdbcDao.salvar(alunos);
+				
+				}catch(Exception ex) {
+					ex.printStackTrace();
+				}
+				
+			}
+		});
+		
+		paine.add(btnAlterar);
+		btnAlterar.setBounds(120, 250, 100, 30);
+		btnAlterar.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				try {
+				Alunos alunos = new Alunos();
+								
+				Connection connection = JdbUtil.getConnection();
+				AlunosJdbcDAO alunosJdbcDao = new AlunosJdbcDAO(connection);
+				
+				alunosJdbcDao.alterar(alunos);
+				
+				}catch(Exception ex) {
+					ex.printStackTrace();
+				}
+				
+			}
+		});
+		
+		paine.add(btnListar);
+		btnListar.setBounds(230, 250, 100, 30);
+		btnListar.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				try {
+								
+				Connection connection = JdbUtil.getConnection();
+				AlunosJdbcDAO alunosJdbcDao = new AlunosJdbcDAO(connection);
+				
+				System.out.print(alunosJdbcDao.listar());
+				
+				}catch(Exception ex) {
+					ex.printStackTrace();
+				}
+				
+			}
+		});
+		
+		paine.add(btnExcluir);
+		btnExcluir.setBounds(340, 250, 100, 30);
+		btnExcluir.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				try {
+				Alunos alunos = new Alunos();
+								
+				Connection connection = JdbUtil.getConnection();
+				AlunosJdbcDAO alunosJdbcDao = new AlunosJdbcDAO(connection);
+				
+				alunosJdbcDao.excluir(alunos);
+				
+				}catch(Exception ex) {
+					ex.printStackTrace();
+				}
+				
+			}
+		});
+		
+		btnVoltar.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				try {
+								
+				EntidadesExec entidadesExec = new EntidadesExec();
+				
+				}catch(Exception ex) {
+					ex.printStackTrace();
+				}
+				
+			}
+		});
+		
+		paine.add(btnVoltar);
+		btnVoltar.setBounds(470, 250, 100, 30);
+		btnVoltar.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				try {
+								
+				EntidadesExec entidadesExec = new EntidadesExec();
 				
 				}catch(Exception ex) {
 					ex.printStackTrace();

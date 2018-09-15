@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 
 public class EntidadesExec extends JFrame {
 	
-	JLabel acesso = new JLabel("Escolha uma das opções de acesso: ");
+	JLabel acesso = new JLabel("ESCOLHA UMA DAS OPÇÕES DE ACESSO: ");
 	
 	JButton btnAlunos = new JButton("ALUNO");
 	JButton btnCurso = new JButton("CURSO");
@@ -23,7 +23,7 @@ public class EntidadesExec extends JFrame {
 		Container paine = this.getContentPane();
 		
 		paine.add(acesso);
-		acesso.setBounds(150, 15, 500, 30);
+		acesso.setBounds(125, 15, 500, 30);
 		
 		paine.add(btnAlunos);
 		btnAlunos.setBounds(200, 85, 100, 30);

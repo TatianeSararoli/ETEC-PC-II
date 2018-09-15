@@ -25,7 +25,7 @@ public class CursoJdbcDAO {
 	}
 	
 	public void alterar(Curso c) {
-		String sql = "update curso set nr_curso='"+c.getNr_curso()+"',nome_curso='"+c.getNome_curso()+"';";
+		String sql = "update curso set nome_curso='"+c.getNome_curso()+"';";
 		System.out.println(sql);
 		PreparedStatement prepareStatement;
 		try {

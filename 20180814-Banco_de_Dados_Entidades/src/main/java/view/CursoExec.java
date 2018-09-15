@@ -23,6 +23,14 @@ public class CursoExec extends JFrame {
 
 	JButton btnSalvar = new JButton("Salvar");
 	
+	JButton btnAlterar = new JButton("Alterar");
+	
+	JButton btnListar = new JButton("Listar");
+	
+	JButton btnExcluir = new JButton("Excluir");
+	
+	JButton btnVoltar = new JButton("Voltar");
+	
 	public CursoExec() {
 		super ("Cadastro de Cursos");
 		
@@ -36,10 +44,10 @@ public class CursoExec extends JFrame {
 		paine.add(nome_curso);
 		paine.add(txtNome_curso);
 		nome_curso.setBounds(10, 50, 100, 30);
-		txtNome_curso.setBounds(125, 50, 225, 30);
+		txtNome_curso.setBounds(125, 50, 450, 30);
 		
 		paine.add(btnSalvar);
-		btnSalvar.setBounds(250, 250, 130, 30);
+		btnSalvar.setBounds(10, 250, 100, 30);
 		btnSalvar.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				try {
@@ -51,6 +59,48 @@ public class CursoExec extends JFrame {
 				CursoJdbcDAO cursoJdbcDao = new CursoJdbcDAO(connection);
 				
 				cursoJdbcDao.salvar(curso);
+				
+				}catch(Exception ex) {
+					ex.printStackTrace();
+				}
+				
+			}
+		});
+		
+		paine.add(btnAlterar);
+		btnAlterar.setBounds(120, 250, 100, 30);
+		btnAlterar.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				try {
+				Curso curso = new Curso();
+				curso.setNr_curso(Integer.parseInt(txtNr_curso.getText()));
+				curso.setNome_curso(txtNome_curso.getText());
+				
+				Connection connection = JdbUtil.getConnection();
+				CursoJdbcDAO cursoJdbcDao = new CursoJdbcDAO(connection);
+				
+				cursoJdbcDao.alterar(curso);
+				
+				}catch(Exception ex) {
+					ex.printStackTrace();
+				}
+				
+			}
+		});
+		
+		paine.add(btnListar);
+		btnListar.setBounds(230, 250, 100, 30);
+		
+		paine.add(btnExcluir);
+		btnExcluir.setBounds(340, 250, 100, 30);
+		
+		paine.add(btnVoltar);
+		btnVoltar.setBounds(470, 250, 100, 30);
+		btnVoltar.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				try {
+								
+				EntidadesExec entidadesExec = new EntidadesExec();
 				
 				}catch(Exception ex) {
 					ex.printStackTrace();

@@ -16,7 +16,7 @@ import model.Disciplina;
 
 public class DisciplinaExec extends JFrame {
 	JTextField txtId_disciplina = new JTextField();
-	JLabel id_disciplina = new JLabel("SIGLA DISCIPL.: ");
+	JLabel id_disciplina = new JLabel("SIGLA DISCIPLINA: ");
 	
 	JTextField txtNome_disciplina = new JTextField();
 	JLabel nome_disciplina = new JLabel("DISCIPLINA: ");
@@ -26,6 +26,14 @@ public class DisciplinaExec extends JFrame {
 	
 	JButton btnSalvar = new JButton("Salvar");
 	
+	JButton btnAlterar = new JButton("Alterar");
+	
+	JButton btnListar = new JButton("Listar");
+	
+	JButton btnExcluir = new JButton("Excluir");
+	
+	JButton btnVoltar = new JButton("Voltar");
+	
 	public DisciplinaExec() {
 		super ("Cadastro de Disciplinas");
 		
@@ -33,21 +41,21 @@ public class DisciplinaExec extends JFrame {
 		
 		paine.add(id_disciplina);
 		paine.add(txtId_disciplina);
-		id_disciplina.setBounds(10, 15, 100, 30);
-		txtId_disciplina.setBounds(125, 15, 225, 30);
+		id_disciplina.setBounds(10, 15, 120, 30);
+		txtId_disciplina.setBounds(125, 15, 125, 30);
 		
 		paine.add(nome_disciplina);
 		paine.add(txtNome_disciplina);
-		nome_disciplina.setBounds(10, 50, 100, 30);
-		txtNome_disciplina.setBounds(125, 50, 225, 30);
+		nome_disciplina.setBounds(10, 50, 120, 30);
+		txtNome_disciplina.setBounds(125, 50, 450, 30);
 		
 		paine.add(carga_horaria);
 		paine.add(txtCarga_horaria);
-		carga_horaria.setBounds(10, 85, 100, 30);
-		txtCarga_horaria.setBounds(125, 85, 225, 30);
+		carga_horaria.setBounds(10, 85, 120, 30);
+		txtCarga_horaria.setBounds(125, 85, 125, 30);
 		
 		paine.add(btnSalvar);
-		btnSalvar.setBounds(250, 250, 130, 30);
+		btnSalvar.setBounds(10, 250, 100, 30);
 		btnSalvar.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				try {
@@ -60,6 +68,49 @@ public class DisciplinaExec extends JFrame {
 				DisciplinaJdbcDAO disciplinaJdbcDao = new DisciplinaJdbcDAO(connection);
 				
 				disciplinaJdbcDao.salvar(disciplina);
+				
+				}catch(Exception ex) {
+					ex.printStackTrace();
+				}
+				
+			}
+		});
+		
+		paine.add(btnAlterar);
+		btnAlterar.setBounds(120, 250, 100, 30);
+		btnAlterar.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				try {
+				Disciplina disciplina = new Disciplina();
+				disciplina.setId_disciplina(txtId_disciplina.getText());
+				disciplina.setNome_disciplina(txtNome_disciplina.getText());
+				disciplina.setCarga_horaria(Integer.parseInt(txtCarga_horaria.getText()));
+								
+				Connection connection = JdbUtil.getConnection();
+				DisciplinaJdbcDAO disciplinaJdbcDao = new DisciplinaJdbcDAO(connection);
+				
+				disciplinaJdbcDao.salvar(disciplina);
+				
+				}catch(Exception ex) {
+					ex.printStackTrace();
+				}
+				
+			}
+		});
+		
+		paine.add(btnListar);
+		btnListar.setBounds(230, 250, 100, 30);
+		
+		paine.add(btnExcluir);
+		btnExcluir.setBounds(340, 250, 100, 30);
+		
+		paine.add(btnVoltar);
+		btnVoltar.setBounds(470, 250, 100, 30);
+		btnVoltar.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				try {
+								
+				EntidadesExec entidadesExec = new EntidadesExec();
 				
 				}catch(Exception ex) {
 					ex.printStackTrace();
