@@ -33,8 +33,8 @@ public class ClienteJpaDAO {
               return entityManager;
     }
 
-    public Cliente getById(final int id) {
-              return entityManager.find(Cliente.class, id);
+    public Cliente getByIdCliente(final int idCliente) {
+              return entityManager.find(Cliente.class, idCliente);
     }
 
     @SuppressWarnings("unchecked")
@@ -67,7 +67,7 @@ public class ClienteJpaDAO {
     public void remove(Cliente cliente) {
               try {
                        entityManager.getTransaction().begin();
-                       cliente = entityManager.find(Cliente.class, cliente.getId());
+                       cliente = entityManager.find(Cliente.class, cliente.getIdCliente());
                        entityManager.remove(cliente);
                        entityManager.getTransaction().commit();
               } catch (Exception ex) {
@@ -76,9 +76,9 @@ public class ClienteJpaDAO {
               }
     }
 
-    public void removeById(final int id) {
+    public void removeByIdCliente(final int idCliente) {
               try {
-                       Cliente cliente = getById(id);
+                       Cliente cliente = getByIdCliente(idCliente);
                        remove(cliente);
               } catch (Exception ex) {
                        ex.printStackTrace();
