@@ -1,17 +1,15 @@
 package model;
 
-import java.io.Serializable;
+import java.util.Collection;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "cliente")
-public class Cliente implements Serializable {
+public class Cliente {
 	@OneToMany (mappedBy = "cliente",
 				targetEntity = Pedido.class,
 				cascade = CascadeType.ALL)
