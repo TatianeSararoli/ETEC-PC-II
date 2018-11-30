@@ -18,7 +18,7 @@ public class ClientesRelat {
 	// Recupera os caminhos para que a classe possa encontrar os relatórios
 	public ClientesRelat() {
 		this.path = this.getClass().getClassLoader().getResource("").getPath();
-		this.pathToReportPackage = this.path + "report/";
+		this.pathToReportPackage = this.path + "relatorio/";
 		System.out.println(path);
 	}
 
@@ -28,7 +28,7 @@ public class ClientesRelat {
 
 		JasperPrint print = JasperFillManager.fillReport(report, null, new JRBeanCollectionDataSource(clientes));
 
-		JasperExportManager.exportReportToPdfFile(print, "c:/Relatorio_de_Clientes.pdf");
+		JasperExportManager.exportReportToPdfFile(print, "D:/Relatorio_de_Clientes.pdf");
 	}
 
 	public String getPathToReportPackage() {
